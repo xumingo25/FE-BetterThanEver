@@ -1,13 +1,7 @@
-
-import './App.css'
+import Home from "./pages/home";
 
 function App() {
-  return (
-    <div className="text-red-500 text-3xl font-bold">
-      Tailwind funcionando 🔥
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
-
