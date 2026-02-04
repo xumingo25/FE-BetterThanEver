@@ -1,4 +1,4 @@
-import { NutritionRequest, MacrosResponse } from "../types/nutrition";
+import type { NutritionRequest, MacrosResponse } from "../types/nutrition";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

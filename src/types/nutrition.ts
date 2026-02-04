@@ -22,3 +22,14 @@ export interface MacrosResponse {
   carbs: number;
   fat: number;
 }
+
+export interface NutritionForm {
+  unit: "KG" | "LB";
+  weight: string;
+  height: string;
+  age: string;
+  gender: "MALE" | "FEMALE";
+  activityLevel: "SEDENTARY" | "LOW" | "MODERATE" | "HIGH";
+  goal: "LOSE_WEIGHT" | "GAIN_WEIGHT";
+}
+

@@ -2,19 +2,19 @@ import { useState } from "react";
 import { Input } from "../components/form/Input";
 import { Select } from "../components/form/Select";
 import { calculateMacros } from "../services/nutrition.service";
-import { MacrosResponse } from "../types/nutrition";
+import type { MacrosResponse, NutritionForm } from "../types/nutrition";
 import { validateForm } from "../utils/validators";
 
 export default function Home() {
-  const [form, setForm] = useState({
-    unit: "KG",
-    weight: "",
-    height: "",
-    age: "",
-    gender: "MALE",
-    activityLevel: "MODERATE",
-    goal: "LOSE_WEIGHT",
-  });
+  const [form, setForm] = useState<NutritionForm>({
+  unit: "KG",
+  weight: "",
+  height: "",
+  age: "",
+  gender: "MALE",
+  activityLevel: "MODERATE",
+  goal: "LOSE_WEIGHT",
+});
 
   const [result, setResult] = useState<MacrosResponse | null>(null);
   const [error, setError] = useState("");
@@ -33,11 +33,14 @@ export default function Home() {
     setError("");
     try {
       const response = await calculateMacros({
-        ...form,
+        unit: form.unit,
         weight: Number(form.weight),
         height: Number(form.height),
         age: Number(form.age),
-      });
+        gender: form.gender,
+        activityLevel: form.activityLevel,
+        goal: form.goal,
+    }); 
       setResult(response);
     } catch {
       setError("Error al calcular los macros");
